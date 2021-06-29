@@ -1,0 +1,76 @@
+<html>
+    <head>
+       
+        <title>
+           
+            <%= locals.titile %>
+        </title>
+
+        <!-- font-awesome link of css file -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+
+         <!-- our css file should be below all other style so that we can override it-->
+        <link rel="stylesheet" href="/css/home.css">
+
+    </head>
+    <body>
+        <h1 id="page-heading">
+            <i class="fas fa-address-book"></i>
+            Contacts List
+        
+        </h1>
+
+        <div id="contacts-list-container" >
+            <ul >
+                <% for(let i of contact_List) {%>
+  
+                  <li class="contact" >
+                      <div class="details">
+                          <p><%= i.name %></p>
+                          <p><%= i.phone %></p>
+                     </div>
+   
+
+                    <!-- <div class="delete-button"> -->
+                        <!-- <a href="/delete-contact/Deepak"> -->
+                         <!-- <a href="/delete-contact/<%= i.phone %> ">
+                             <i class="fas fa-window-close"></i>
+                         </a>
+
+                    </div> -->
+
+
+                    <div class="delete-button">
+                       
+                         <!-- <a href="/delete-contact/?phone=<%= i.phone %>& name=<%= i.name %> "> -->
+                            <!-- <a href="/delete-contact/?phone=<%= i.phone %> "> -->
+                                <a href="/delete-contact/?id=<%= i._id %> ">
+                             <i class="fas fa-window-close"></i>
+                         </a>
+
+                    </div>
+
+                  </li>
+
+                    <%}%>
+
+            </ul>
+        </div>
+
+        <form  id="new-contact-form"  action="/create-contact"  method="POST" > 
+
+            <input type="text" name="name" placeholder="Enter name" required>
+
+            <input type="number" name="phone" placeholder="Enter phone number" required>
+
+            <button type="submit">	<span>ADD Contact</span></button>
+             
+
+
+        </form>
+
+ 
+        <script type="text/javascript" src="/js/home.js"></script>
+
+    </body>
+</html>
